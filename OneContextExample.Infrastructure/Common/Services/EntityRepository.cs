@@ -5,7 +5,7 @@ using OneContextExample.Infrastructure.Data;
 
 namespace OneContextExample.Infrastructure.Common.Services;
 
-internal class EntityPreserver<TEntity, TData>(DataContext context, IPublisher publisher)
+internal class EntityRepository<TEntity, TData>(DataContext context, IPublisher publisher)
     where TData : class, IEntityData<TData, TEntity>
     where TEntity : Entity
 {

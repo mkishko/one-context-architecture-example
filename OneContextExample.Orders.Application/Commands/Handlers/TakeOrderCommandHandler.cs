@@ -3,15 +3,15 @@ using OneContextExample.Orders.Application.Commands.Services;
 
 namespace OneContextExample.Orders.Application.Commands.Handlers;
 
-public class TakeOrderCommandHandler(IOrdersPreserver preserver) : ICommandHandler<TakeOrderCommand>
+public class TakeOrderCommandHandler(IOrdersRepository repository) : ICommandHandler<TakeOrderCommand>
 {
     public async ValueTask<Unit> Handle(TakeOrderCommand command, CancellationToken cancellationToken)
     {
-        var order = await preserver.Get(command.OrderId, cancellationToken)
+        var order = await repository.Get(command.OrderId, cancellationToken)
             ?? throw new InvalidOperationException("Order not found");
         
         order.TakeOrder();
-        await preserver.Save(order, cancellationToken);
+        await repository.Save(order, cancellationToken);
         return Unit.Value;
     }
 }

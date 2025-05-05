@@ -8,8 +8,8 @@ using Db = OneContextExample.Infrastructure.Data.Couriers;
 
 namespace OneContextExample.Infrastructure.Couriers.Services;
 
-internal class CouriersPreserver(
+internal class CouriersRepository(
     DataContext context,
     IPublisher publisher) :
-    EntityPreserver<Courier, Db.Courier>(context, publisher),
-    ICouriersPreserver;
+    EntityRepository<Courier, Db.Courier>(context, publisher),
+    ICouriersRepository;

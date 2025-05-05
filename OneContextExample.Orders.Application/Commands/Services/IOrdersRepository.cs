@@ -2,7 +2,7 @@ using OneContextExample.Orders.Domain;
 
 namespace OneContextExample.Orders.Application.Commands.Services;
 
-public interface IOrdersPreserver
+public interface IOrdersRepository
 {
     Task<Order?> Get(Guid id, CancellationToken cancellationToken = default);
     

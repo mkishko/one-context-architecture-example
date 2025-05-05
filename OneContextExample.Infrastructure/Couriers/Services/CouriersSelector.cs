@@ -6,7 +6,7 @@ using OneContextExample.Infrastructure.Data.Couriers;
 
 namespace OneContextExample.Infrastructure.Couriers.Services;
 
-internal class CouriersExtractor(DataContext context) : ICouriersExtractor
+internal class CouriersSelector(DataContext context) : ICouriersSelector
 {
     public async Task<IReadOnlyCollection<GetCourierResponse>> GetCouriers(CancellationToken cancellationToken = default)
     {

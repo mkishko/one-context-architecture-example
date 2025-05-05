@@ -2,7 +2,7 @@ using OneContextExample.Couriers.Application.Queries.Models;
 
 namespace OneContextExample.Couriers.Application.Queries.Services;
 
-public interface ICouriersExtractor
+public interface ICouriersSelector
 {
     Task<IReadOnlyCollection<GetCourierResponse>> GetCouriers(CancellationToken cancellationToken = default);
     
