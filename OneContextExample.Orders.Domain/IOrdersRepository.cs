@@ -1,6 +1,4 @@
-using OneContextExample.Orders.Domain;
-
-namespace OneContextExample.Orders.Application.Commands.Services;
+namespace OneContextExample.Orders.Domain;
 
 public interface IOrdersRepository
 {

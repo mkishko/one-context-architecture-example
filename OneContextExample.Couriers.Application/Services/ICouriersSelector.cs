@@ -1,6 +1,6 @@
 using OneContextExample.Couriers.Application.Queries.Models;
 
-namespace OneContextExample.Couriers.Application.Queries.Services;
+namespace OneContextExample.Couriers.Application.Services;
 
 public interface ICouriersSelector
 {

@@ -1,5 +1,5 @@
 using Mediator;
-using OneContextExample.Couriers.Application.Commands.Services;
+using OneContextExample.Couriers.Application.Services;
 using OneContextExample.Orders.Application.Commands;
 using OneContextExample.Orders.Application.Queries;
 

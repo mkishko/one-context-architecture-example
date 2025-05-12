@@ -1,6 +1,4 @@
-using OneContextExample.Couriers.Domain;
-
-namespace OneContextExample.Couriers.Application.Commands.Services;
+namespace OneContextExample.Couriers.Domain;
 
 public interface ICouriersRepository
 {

@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using OneContextExample.Couriers.Application.Commands.Services;
-using OneContextExample.Couriers.Application.Queries.Services;
+using OneContextExample.Couriers.Application.Services;
+using OneContextExample.Couriers.Domain;
 using OneContextExample.Infrastructure.Couriers.Adapters;
 using OneContextExample.Infrastructure.Couriers.Services;
 using OneContextExample.Infrastructure.Data;
 using OneContextExample.Infrastructure.Orders;
 using OneContextExample.Infrastructure.Orders.Services;
-using OneContextExample.Orders.Application.Commands.Services;
-using OneContextExample.Orders.Application.Queries.Services;
+using OneContextExample.Orders.Application.Services;
+using OneContextExample.Orders.Domain;
 
 namespace OneContextExample.Api.Extensions;
 

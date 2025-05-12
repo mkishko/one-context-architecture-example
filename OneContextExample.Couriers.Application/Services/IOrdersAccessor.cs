@@ -1,4 +1,4 @@
-namespace OneContextExample.Couriers.Application.Commands.Services;
+namespace OneContextExample.Couriers.Application.Services;
 
 public interface IOrdersAccessor
 {

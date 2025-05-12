@@ -1,6 +1,6 @@
 using OneContextExample.Orders.Domain;
 
-namespace OneContextExample.Orders.Application.Queries.Services;
+namespace OneContextExample.Orders.Application.Services;
 
 public interface IOrdersSelector
 {

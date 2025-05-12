@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using Mediator;
 using OneContextExample.Couriers.Application.Queries.Models;
-using OneContextExample.Couriers.Application.Queries.Services;
+using OneContextExample.Couriers.Application.Services;
 
 namespace OneContextExample.Couriers.Application.Queries.Handlers;
 

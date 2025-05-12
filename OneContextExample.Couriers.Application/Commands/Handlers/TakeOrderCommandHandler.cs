@@ -1,5 +1,6 @@
 using Mediator;
-using OneContextExample.Couriers.Application.Commands.Services;
+using OneContextExample.Couriers.Application.Services;
+using OneContextExample.Couriers.Domain;
 
 namespace OneContextExample.Couriers.Application.Commands.Handlers;
 

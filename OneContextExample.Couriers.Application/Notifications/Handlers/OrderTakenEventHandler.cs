@@ -1,8 +1,8 @@
 using Mediator;
-using OneContextExample.Couriers.Application.Commands.Services;
+using OneContextExample.Couriers.Application.Services;
 using OneContextExample.Couriers.Domain.Events;
 
-namespace OneContextExample.Couriers.Application.Commands.Handlers;
+namespace OneContextExample.Couriers.Application.Notifications.Handlers;
 
 public class OrderTakenEventHandler(IOrdersAccessor accessor) : INotificationHandler<OrderTakenEvent>
 {

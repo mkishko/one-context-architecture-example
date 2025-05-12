@@ -1,5 +1,5 @@
 using Mediator;
-using OneContextExample.Orders.Application.Commands.Services;
+using OneContextExample.Orders.Domain;
 
 namespace OneContextExample.Orders.Application.Commands.Handlers;
 
