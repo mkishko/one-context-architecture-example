@@ -1,4 +1,6 @@
 using Mediator;
+using OneContextExample.Core;
+using OneContextExample.Couriers.Application.Events;
 using OneContextExample.Couriers.Application.Services;
 using OneContextExample.Couriers.Domain;
 
@@ -14,7 +16,7 @@ public class TakeOrderCommandHandler(
         var courier = await couriersRepository.Get(command.CourierId, cancellationToken)
             ?? throw new InvalidOperationException("Courier not found");
         var orderCanBeTaken = await ordersAccessor.CanBeTaken(command.OrderId, cancellationToken);
-
+        
         if (!courier.IsBusy && orderCanBeTaken)
         {
             courier.TakeOrder(command.OrderId);

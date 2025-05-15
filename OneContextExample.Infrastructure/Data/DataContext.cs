@@ -3,6 +3,7 @@ using OneContextExample.Infrastructure.Data.Couriers;
 using OneContextExample.Infrastructure.Data.Couriers.Configurations;
 using OneContextExample.Infrastructure.Data.Orders;
 using OneContextExample.Infrastructure.Data.Orders.Configurations;
+using OneContextExample.Infrastructure.Data.Outbox.Configurations;
 
 namespace OneContextExample.Infrastructure.Data;
 
@@ -17,5 +18,6 @@ internal class DataContext(DbContextOptions<DataContext> options)
     {
         modelBuilder.ApplyConfiguration(new CourierConfiguration());
         modelBuilder.ApplyConfiguration(new OrderConfiguration());
+        modelBuilder.ApplyConfiguration(new KafkaMessageConfiguration());
     }
 }

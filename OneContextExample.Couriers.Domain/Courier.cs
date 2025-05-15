@@ -40,6 +40,6 @@ public class Courier : Entity
         }
         
         CurrentOrderId = orderId;
-        AddEvent(new OrderTakenEvent(orderId));
+        AddEvent(new OrderTakenEvent(Id, orderId));
     }
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTAINER_NAME=pg-courier
+CONTAINER_NAME=mysql-courier
 
 if [ "$(docker ps -a -q -f name=$CONTAINER_NAME)" ]; then
     docker rm -f $CONTAINER_NAME
@@ -8,11 +8,12 @@ fi
 
 docker run -d \
   --name $CONTAINER_NAME \
-  -e POSTGRES_USER=courier \
-  -e POSTGRES_PASSWORD=courier \
-  -e POSTGRES_DB=courier \
-  -p 5432:5432 \
-  postgres:latest
+  -e MYSQL_ROOT_PASSWORD=courier \
+  -e MYSQL_DATABASE=courier \
+  -e MYSQL_USER=courier \
+  -e MYSQL_PASSWORD=courier \
+  -p 3306:3306 \
+  mysql:8.0
 
   sleep 5
 
