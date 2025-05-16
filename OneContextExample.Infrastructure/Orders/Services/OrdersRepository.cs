@@ -1,4 +1,3 @@
-using Mediator;
 using OneContextExample.Infrastructure.Common.Services;
 using OneContextExample.Infrastructure.Data;
 using OneContextExample.Orders.Domain;
@@ -8,6 +7,6 @@ namespace OneContextExample.Infrastructure.Orders.Services;
 
 internal class OrdersRepository(
     DataContext context,
-    IPublisher publisher) :
-    EntityRepository<Order, Db.Order>(context, publisher),
+    IDomainEventsDispatcher dispatcher) :
+    EntityRepository<Order, Db.Order>(context, dispatcher),
     IOrdersRepository;

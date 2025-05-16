@@ -1,21 +1,33 @@
-using Mediator;
 using Microsoft.EntityFrameworkCore;
 using OneContextExample.Core;
 using OneContextExample.Infrastructure.Data;
 
 namespace OneContextExample.Infrastructure.Common.Services;
 
-internal class EntityRepository<TEntity, TData>(DataContext context, IPublisher publisher)
+internal abstract class EntityRepository<TEntity>(IDomainEventsDispatcher dispatcher)
+    where TEntity : Entity
+{
+    protected abstract Task SaveEntity(TEntity entity, CancellationToken cancellationToken = default);
+    
+    public async Task Save(TEntity entity, CancellationToken cancellationToken = default)
+    {
+        await SaveEntity(entity, cancellationToken);
+        await dispatcher.Dispatch(entity, cancellationToken);
+    }
+}
+
+internal class EntityRepository<TEntity, TData>(DataContext context, IDomainEventsDispatcher dispatcher)
+    : EntityRepository<TEntity>(dispatcher)
     where TData : class, IEntityData<TData, TEntity>
     where TEntity : Entity
 {
-    public async Task<TEntity?> Get(Guid id, CancellationToken cancellationToken = default)
+    public virtual async Task<TEntity?> Get(Guid id, CancellationToken cancellationToken = default)
     {
         var courierData = await context.Set<TData>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         return courierData?.ToEntity();
     }
-    
-    public async Task Save(TEntity entity, CancellationToken cancellationToken = default)
+
+    protected override async Task SaveEntity(TEntity entity, CancellationToken cancellationToken = default)
     {
         var data = TData.FromEntity(entity);
         var local = context.Set<TData>().Local.FirstOrDefault(e => e.Id == entity.Id);
@@ -27,27 +39,7 @@ internal class EntityRepository<TEntity, TData>(DataContext context, IPublisher 
         {
             context.Update(data);
         }
-
-        if (context.Database.CurrentTransaction is null)
-        {
-            await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
-            await SaveInternal(entity, cancellationToken);
-            await transaction.CommitAsync(cancellationToken);
-        }
-        else
-        {
-            await SaveInternal(entity, cancellationToken);
-        }
-    }
-
-    private async Task SaveInternal(TEntity entity, CancellationToken cancellationToken = default)
-    {
+        
         await context.SaveChangesAsync(cancellationToken);
-
-        var domainEvents = (entity as IDomainEventsProvider).ExtractAll();
-        for (var i = 0; i < domainEvents.Count; i++)
-        {
-            await publisher.Publish(domainEvents[i], cancellationToken);
-        }
     }
 }

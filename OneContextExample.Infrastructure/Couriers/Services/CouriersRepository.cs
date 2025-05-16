@@ -1,4 +1,3 @@
-using Mediator;
 using OneContextExample.Couriers.Domain;
 using OneContextExample.Infrastructure.Common.Services;
 using OneContextExample.Infrastructure.Data;
@@ -9,6 +8,6 @@ namespace OneContextExample.Infrastructure.Couriers.Services;
 
 internal class CouriersRepository(
     DataContext context,
-    IPublisher publisher) :
-    EntityRepository<Courier, Db.Courier>(context, publisher),
+    IDomainEventsDispatcher dispatcher) :
+    EntityRepository<Courier, Db.Courier>(context, dispatcher),
     ICouriersRepository;
