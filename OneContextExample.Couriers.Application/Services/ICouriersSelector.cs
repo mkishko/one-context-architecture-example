@@ -1,4 +1,4 @@
-using OneContextExample.Couriers.Application.Queries.Models;
+using OneContextExample.Couriers.Contracts.Queries.Models;
 
 namespace OneContextExample.Couriers.Application.Services;
 

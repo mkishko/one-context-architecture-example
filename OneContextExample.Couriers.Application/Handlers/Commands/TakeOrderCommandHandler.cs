@@ -1,11 +1,12 @@
+using JetBrains.Annotations;
 using Mediator;
-using OneContextExample.Core;
-using OneContextExample.Couriers.Application.Events;
 using OneContextExample.Couriers.Application.Services;
+using OneContextExample.Couriers.Contracts.Commands;
 using OneContextExample.Couriers.Domain;
 
-namespace OneContextExample.Couriers.Application.Commands.Handlers;
+namespace OneContextExample.Couriers.Application.Handlers.Commands;
 
+[UsedImplicitly]
 public class TakeOrderCommandHandler(
     ICouriersRepository couriersRepository,
     IOrdersAccessor ordersAccessor)

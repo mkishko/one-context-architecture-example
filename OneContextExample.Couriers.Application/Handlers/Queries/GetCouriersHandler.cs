@@ -1,9 +1,10 @@
 using JetBrains.Annotations;
 using Mediator;
-using OneContextExample.Couriers.Application.Queries.Models;
 using OneContextExample.Couriers.Application.Services;
+using OneContextExample.Couriers.Contracts.Queries;
+using OneContextExample.Couriers.Contracts.Queries.Models;
 
-namespace OneContextExample.Couriers.Application.Queries.Handlers;
+namespace OneContextExample.Couriers.Application.Handlers.Queries;
 
 [UsedImplicitly]
 public class GetCouriersHandler(ICouriersSelector dataSelector) : IQueryHandler<GetCouriersQuery, IReadOnlyCollection<GetCourierResponse>>

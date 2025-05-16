@@ -1,8 +1,8 @@
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
 using OneContextExample.Api.Requests;
-using OneContextExample.Couriers.Application.Commands;
-using OneContextExample.Couriers.Application.Queries;
+using OneContextExample.Couriers.Contracts.Commands;
+using OneContextExample.Couriers.Contracts.Queries;
 
 namespace OneContextExample.Api.Controllers;
 

@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\OneContextExample.Core\OneContextExample.Core.csproj" />
+      <ProjectReference Include="..\OneContextExample.Orders.Contracts\OneContextExample.Orders.Contracts.csproj" />
       <ProjectReference Include="..\OneContextExample.Orders.Domain\OneContextExample.Orders.Domain.csproj" />
     </ItemGroup>
 

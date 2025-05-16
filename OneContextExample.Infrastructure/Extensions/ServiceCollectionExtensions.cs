@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OneContextExample.Core;
-using OneContextExample.Couriers.Application.Events;
+using OneContextExample.Couriers.Application.IntergationEvents;
 using OneContextExample.Infrastructure.Common.Services;
 using OneContextExample.Infrastructure.Data;
 using OneContextExample.Infrastructure.PipelineBehaviours;

@@ -1,6 +1,6 @@
 using Mediator;
 using OneContextExample.Core;
-using OneContextExample.Couriers.Application.Events;
+using OneContextExample.Couriers.Application.IntergationEvents;
 using OneContextExample.Couriers.Application.Services;
 using OneContextExample.Couriers.Domain.Events;
 

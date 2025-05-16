@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using OneContextExample.Couriers.Application.Queries.Models;
 using OneContextExample.Couriers.Application.Services;
+using OneContextExample.Couriers.Contracts.Queries.Models;
 using OneContextExample.Infrastructure.Data;
 using OneContextExample.Infrastructure.Data.Couriers;
 

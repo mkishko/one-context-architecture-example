@@ -1,5 +1,5 @@
 using OneContextExample.Core;
 
-namespace OneContextExample.Couriers.Application.Commands;
+namespace OneContextExample.Couriers.Contracts.Commands;
 
 public record TakeOrderCommand(Guid CourierId, Guid OrderId) : ITransactionalCommand<bool>;
