@@ -13,5 +13,9 @@
     <ItemGroup>
       <PackageReference Include="Mediator.Abstractions" Version="2.1.7" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="OneContextExample.Infrastructure.DataAccess" />
+    </ItemGroup>
 
 </Project>

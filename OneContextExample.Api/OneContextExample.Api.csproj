@@ -18,7 +18,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\OneContextExample.Couriers.Application\OneContextExample.Couriers.Application.csproj" />
+      <ProjectReference Include="..\OneContextExample.Couriers.Infrastructure\OneContextExample.Couriers.Infrastructure.csproj" />
       <ProjectReference Include="..\OneContextExample.Infrastructure\OneContextExample.Infrastructure.csproj" />
+      <ProjectReference Include="..\OneContextExample.Orders.Infrastructure\OneContextExample.Orders.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 using Mediator;
 using OneContextExample.Core;
-using OneContextExample.Infrastructure.Data;
+using OneContextExample.Infrastructure.DataAccess;
 
 namespace OneContextExample.Infrastructure.PipelineBehaviours;
 
