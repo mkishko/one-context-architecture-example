@@ -1,10 +1,10 @@
-using OneContextExample.Couriers.Contracts.Queries.Models;
+using OneContextExample.Couriers.Contracts.Queries;
 
 namespace OneContextExample.Couriers.Application.Services;
 
 public interface ICourierSelector
 {
-    Task<IReadOnlyCollection<GetCourierResponse>> GetCouriers(CancellationToken cancellationToken = default);
+    Task<IReadOnlyCollection<GetCouriersItemViewModel>> GetCouriers(CancellationToken cancellationToken = default);
     
-    Task<GetCourierResponse?> GetCourier(Guid id, CancellationToken cancellationToken = default);
+    Task<GetCouriersItemViewModel?> GetCourier(Guid id, CancellationToken cancellationToken = default);
 }
