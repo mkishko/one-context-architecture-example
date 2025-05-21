@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>OneContextExample.Infrastructure</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="dodo.kafka.outbox.mysql" Version="0.14.1" />
+      <PackageReference Include="Mediator.Abstractions" Version="2.1.7" />
+      <PackageReference Include="Mediator.SourceGenerator" Version="2.1.7">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Couriers\OneContextExample.Couriers.Application\OneContextExample.Couriers.Application.csproj" />
+      <ProjectReference Include="..\Couriers\OneContextExample.Couriers.Domain\OneContextExample.Couriers.Domain.csproj" />
+      <ProjectReference Include="..\OneContextExample.Core\OneContextExample.Core.csproj" />
+      <ProjectReference Include="..\OneContextExample.Infrastructure.DataAccess\OneContextExample.Infrastructure.DataAccess.csproj" />
+      <ProjectReference Include="..\Orders\OneContextExample.Orders.Domain\OneContextExample.Orders.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

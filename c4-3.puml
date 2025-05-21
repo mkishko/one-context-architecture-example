@@ -1,0 +1,79 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component diagram for One Context Architecture Example
+
+Container_Boundary(system, "System") {
+Container_Boundary(api, "API Layer") {
+    Component(couriers_controller, "CouriersController", "ASP.NET Core", "Handles courier-related HTTP requests")
+    Component(orders_controller, "OrdersController", "ASP.NET Core", "Handles order-related HTTP requests")
+}
+
+    Component(mediator, "Mediator", "C#", "Data transfer objects")
+
+Container_Boundary(couriers, "Couriers Bounded Context") {
+    Container_Boundary(couriers_domain, "Domain Layer") {
+        Component(courier_entity, "Courier", "C#", "Core domain entity")
+        Component(courier_repository, "ICourierRepository", "C#", "Repository interface")
+    }
+    
+    Container_Boundary(couriers_application, "Application Layer") {
+        Component(courier_commands, "TakeOrderCommandHandler", "C#", "??")
+    }
+    
+    Container_Boundary(couriers_infrastructure, "Infrastructure Layer") {
+        Component(courier_repo_impl, "CourierRepository", "C#", "Repository implementation")
+    }
+}
+
+Container_Boundary(orders, "Orders Bounded Context") {
+    Container_Boundary(orders_domain, "Domain Layer") {
+        Component(order_entity, "Order", "C#", "Core domain entity")
+        Component(order_repository, "IOrderRepository", "C#", "Repository interface")
+    }
+    
+    Container_Boundary(orders_application, "Application Layer") {
+        Component(can_order_be_taken_query_handler, "CanOrderBeTakenQueryHandler", "C#", "Query handlers")
+        Component(get_order_query_handler, "GetOrderQueryHandler", "C#", "Query handlers")
+    }
+    
+    Container_Boundary(orders_infrastructure, "Infrastructure Layer") {
+        Component(order_repo_impl, "OrderRepository", "C#", "Repository implementation")
+        Component(order_selector, "OrderSelector", "C#", "Data selection service")
+    }
+}
+
+Container_Boundary(shared, "Shared Infrastructure") {
+    Component(core, "Core", "C#", "Shared domain primitives, events, enums")
+    Component(infrastructure, "Infrastructure", "C#", "Mediator, EntityRepository, DatabaseContext")
+}
+}
+
+' API Layer relationships
+Rel(couriers_controller, mediator, "TakeOrderCommand", "Mediator")
+Rel(mediator, courier_commands, "TakeOrderCommand", "Mediator")
+Rel(courier_commands, mediator, "CanOrderBeTakenQuery", "Mediator")
+Rel(orders_controller, mediator, "GetOrderQuery", "Mediator")
+Rel(mediator, can_order_be_taken_query_handler, "CanOrderBeTakenQuery", "Mediator")
+Rel(mediator, get_order_query_handler, "GetOrderQuery", "Mediator")
+
+
+' Bounded Contexts relationships
+Rel(courier_commands, courier_entity, "Use case?")
+Rel(courier_commands, courier_repository, "GET/SAVE")
+
+Rel(can_order_be_taken_query_handler, order_entity, "Uses")
+Rel(can_order_be_taken_query_handler, order_selector, "Uses")
+
+' Shared Infrastructure relationships
+Rel(courier_entity, core, "Seedwork")
+Rel(order_entity, core, "Seedwork")
+Rel(courier_repo_impl, infrastructure, "Uses")
+Rel(courier_repo_impl, courier_repository, "Uses")
+Rel(order_repo_impl, infrastructure, "Uses")
+Rel(order_repo_impl, order_repository, "Uses")
+Rel(order_selector, infrastructure, "Uses")
+
+@enduml
