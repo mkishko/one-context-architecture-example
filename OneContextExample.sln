@@ -1,32 +1,31 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Api", "OneContextExample.Api\OneContextExample.Api.csproj", "{963E4325-7403-403A-B202-973617D0EB74}"
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Api", "src\OneContextExample.Api\OneContextExample.Api.csproj", "{963E4325-7403-403A-B202-973617D0EB74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Infrastructure", "OneContextExample.Infrastructure\OneContextExample.Infrastructure.csproj", "{C61E468E-2751-4BF7-870B-A43DD6FDAFB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Infrastructure", "src\OneContextExample.Infrastructure\OneContextExample.Infrastructure.csproj", "{C61E468E-2751-4BF7-870B-A43DD6FDAFB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Core", "OneContextExample.Core\OneContextExample.Core.csproj", "{C09408AD-2510-46E2-AB41-49AD5E5C0A6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Core", "src\OneContextExample.Core\OneContextExample.Core.csproj", "{C09408AD-2510-46E2-AB41-49AD5E5C0A6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Couriers", "Couriers", "{7965DE1C-9750-46CF-B3D8-60755A4310F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Application", "OneContextExample.Couriers.Application\OneContextExample.Couriers.Application.csproj", "{9BEBE19C-4C6A-44E5-8F2D-66FCEFC0D782}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Application", "src\Couriers\OneContextExample.Couriers.Application\OneContextExample.Couriers.Application.csproj", "{9BEBE19C-4C6A-44E5-8F2D-66FCEFC0D782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Domain", "OneContextExample.Couriers.Domain\OneContextExample.Couriers.Domain.csproj", "{63C5CB21-EF87-4AFA-8119-DD407EF48942}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Domain", "src\Couriers\OneContextExample.Couriers.Domain\OneContextExample.Couriers.Domain.csproj", "{63C5CB21-EF87-4AFA-8119-DD407EF48942}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{D82A32A1-0CD8-4978-A039-40EEE45DC0CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Application", "OneContextExample.Orders.Application\OneContextExample.Orders.Application.csproj", "{F49D8FCF-D39E-4D26-85F8-0EB7FF4B3787}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Application", "src\Orders\OneContextExample.Orders.Application\OneContextExample.Orders.Application.csproj", "{F49D8FCF-D39E-4D26-85F8-0EB7FF4B3787}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Domain", "OneContextExample.Orders.Domain\OneContextExample.Orders.Domain.csproj", "{66EF7D99-4019-44B8-BFA2-1596D97A042B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Domain", "src\Orders\OneContextExample.Orders.Domain\OneContextExample.Orders.Domain.csproj", "{66EF7D99-4019-44B8-BFA2-1596D97A042B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Contracts", "OneContextExample.Couriers.Contracts\OneContextExample.Couriers.Contracts.csproj", "{F0E34552-C69D-4747-AC27-92C254BAFE86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Contracts", "src\Couriers\OneContextExample.Couriers.Contracts\OneContextExample.Couriers.Contracts.csproj", "{F0E34552-C69D-4747-AC27-92C254BAFE86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Contracts", "OneContextExample.Orders.Contracts\OneContextExample.Orders.Contracts.csproj", "{643EB326-A4A0-470A-8134-A726FAD530C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Contracts", "src\Orders\OneContextExample.Orders.Contracts\OneContextExample.Orders.Contracts.csproj", "{643EB326-A4A0-470A-8134-A726FAD530C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Infrastructure", "OneContextExample.Couriers.Infrastructure\OneContextExample.Couriers.Infrastructure.csproj", "{BE730932-67C9-4B34-944A-EC8C2CB863AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Couriers.Infrastructure", "src\Couriers\OneContextExample.Couriers.Infrastructure\OneContextExample.Couriers.Infrastructure.csproj", "{BE730932-67C9-4B34-944A-EC8C2CB863AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Infrastructure", "OneContextExample.Orders.Infrastructure\OneContextExample.Orders.Infrastructure.csproj", "{1D51CF19-C7F1-4624-8BE4-3A8D07A03CB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Orders.Infrastructure", "src\Orders\OneContextExample.Orders.Infrastructure\OneContextExample.Orders.Infrastructure.csproj", "{1D51CF19-C7F1-4624-8BE4-3A8D07A03CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Infrastructure.DataAccess", "OneContextExample.Infrastructure.DataAccess\OneContextExample.Infrastructure.DataAccess.csproj", "{2B4A36E9-C2EA-4E01-B584-C5646EB6DAE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Infrastructure.DataAccess", "src\OneContextExample.Infrastructure.DataAccess\OneContextExample.Infrastructure.DataAccess.csproj", "{2B4A36E9-C2EA-4E01-B584-C5646EB6DAE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
