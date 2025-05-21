@@ -19,7 +19,7 @@
     <ItemGroup>
         <ProjectReference Include="..\Couriers\OneContextExample.Couriers.Application\OneContextExample.Couriers.Application.csproj" />
         <ProjectReference Include="..\Couriers\OneContextExample.Couriers.Infrastructure\OneContextExample.Couriers.Infrastructure.csproj" />
-        <ProjectReference Include="..\OneContextExample.Infrastructure\OneContextExample.Infrastructure.csproj" />
+        <ProjectReference Include="..\OneContextExample.Infrastructure.Core\OneContextExample.Infrastructure.Core.csproj" />
         <ProjectReference Include="..\Orders\OneContextExample.Orders.Infrastructure\OneContextExample.Orders.Infrastructure.csproj" />
     </ItemGroup>
 

@@ -9,15 +9,12 @@ namespace OneContextExample.Api.Controllers;
 public class OrdersController(ISender mediator) : ControllerBase
 {
     /// <summary>
-    /// Gets an order by its unique identifier.
+    /// Retrieves the details of a specific order by its unique identifier.
     /// </summary>
-    /// <param name="id">The unique identifier of the order.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
-    /// <returns>
-    /// Returns the order if found, otherwise returns a 404 Not Found response.
-    /// </returns>
-    /// <response code="200">Returns the requested order.</response>
-    /// <response code="404">If the order is not found.</response>
+    /// <param name="id">The unique identifier of the order to retrieve.</param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains an <see cref="IActionResult"/>:
+    /// 200 OK with the order details if the order is found, or 404 Not Found if the order does not exist.</returns>
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

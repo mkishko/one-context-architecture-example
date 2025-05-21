@@ -25,7 +25,7 @@ namespace OneContextExample.Infrastructure.Migrations.DataAccess
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("OneContextExample.Infrastructure.Data.Couriers.Courier", b =>
+            modelBuilder.Entity("OneContextExample.Infrastructure.Core.Data.Couriers.Courier", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace OneContextExample.Infrastructure.Migrations.DataAccess
                     b.ToTable("couriers", (string)null);
                 });
 
-            modelBuilder.Entity("OneContextExample.Infrastructure.Data.Orders.Order", b =>
+            modelBuilder.Entity("OneContextExample.Infrastructure.Core.Data.Orders.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +62,7 @@ namespace OneContextExample.Infrastructure.Migrations.DataAccess
                     b.ToTable("orders", (string)null);
                 });
 
-            modelBuilder.Entity("OneContextExample.Infrastructure.Data.Outbox.KafkaMessage", b =>
+            modelBuilder.Entity("OneContextExample.Infrastructure.Core.Data.Outbox.KafkaMessage", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,9 +108,9 @@ namespace OneContextExample.Infrastructure.Migrations.DataAccess
                     b.ToTable("events_outbox", (string)null);
                 });
 
-            modelBuilder.Entity("OneContextExample.Infrastructure.Data.Couriers.Courier", b =>
+            modelBuilder.Entity("OneContextExample.Infrastructure.Core.Data.Couriers.Courier", b =>
                 {
-                    b.HasOne("OneContextExample.Infrastructure.Data.Orders.Order", "CurrentOrder")
+                    b.HasOne("OneContextExample.Infrastructure.Core.Data.Orders.Order", "CurrentOrder")
                         .WithMany()
                         .HasForeignKey("CurrentOrderId");
 

@@ -1,7 +1,7 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Api", "src\OneContextExample.Api\OneContextExample.Api.csproj", "{963E4325-7403-403A-B202-973617D0EB74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Infrastructure", "src\OneContextExample.Infrastructure\OneContextExample.Infrastructure.csproj", "{C61E468E-2751-4BF7-870B-A43DD6FDAFB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Infrastructure.Core", "src\OneContextExample.Infrastructure.Core\OneContextExample.Infrastructure.Core.csproj", "{C61E468E-2751-4BF7-870B-A43DD6FDAFB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneContextExample.Core", "src\OneContextExample.Core\OneContextExample.Core.csproj", "{C09408AD-2510-46E2-AB41-49AD5E5C0A6D}"
 EndProject

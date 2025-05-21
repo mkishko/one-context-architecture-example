@@ -6,7 +6,7 @@ using OneContextExample.Orders.Contracts.Queries;
 namespace OneContextExample.Orders.Application.Handlers.Queries;
 
 [UsedImplicitly]
-public class GetOrdersHandler(IOrderSelector dataSelector) : IQueryHandler<GetOrderQuery, GetOrderViewModel?>
+public class GetOrderQueryHandler(IOrderSelector dataSelector) : IQueryHandler<GetOrderQuery, GetOrderViewModel?>
 {
     public async ValueTask<GetOrderViewModel?> Handle(GetOrderQuery query, CancellationToken cancellationToken)
     {
