@@ -1,0 +1,95 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component diagram of staff architecture
+
+Container_Boundary(staff, "Staff") {
+Container_Boundary(api, "API Layer") {
+    Component(couriers_controller, "CouriersController", "ASP.NET Core", "Handles courier-related HTTP requests")
+    Component(orders_controller, "OrdersController", "ASP.NET Core", "Handles order-related HTTP requests")
+}
+
+    Component(mediator, "Mediator", "C#", "Forwards requests to subdomains")
+
+Container_Boundary(couriers, "Couriers Bounded Context") {
+    Container_Boundary(couriers_domain, "Domain Layer") {
+        Component(courier_entity, "Courier", "C#", "Core domain entity")
+        Component(courier_repository, "ICourierRepository", "C#", "Repository interface")
+    }
+    
+    Container_Boundary(couriers_application, "Application Layer") {
+        Component(courier_commands, "TakeOrderCommandHandler", "C#", "Command handlers")
+        Component(order_accessor, "IOrderAccessor", "C#", "ACL port")
+    }
+    
+    Container_Boundary(couriers_infrastructure, "Infrastructure Layer") {
+        Component(courier_repo_impl, "CourierRepository", "C#", "Repository implementation")
+    }
+}
+
+Container_Boundary(orders, "Orders Bounded Context") {
+    Container_Boundary(orders_domain, "Domain Layer") {
+        Component(order_entity, "Order", "C#", "Core domain entity")
+        Component(order_repository, "IOrderRepository", "C#", "Repository interface")
+    }
+    
+    Container_Boundary(orders_application, "Application Layer") {
+        Component(can_order_be_taken_query_handler, "CanOrderBeTakenQueryHandler", "C#", "Query handlers")
+        Component(get_order_query_handler, "GetOrderQueryHandler", "C#", "Query handlers")
+        Component(take_order_command_handler, "TakeOrderCommandHandler", "C#", "Command handlers")
+        Component(order_selector, "IOrderSelector", "C#", "Port")
+    }
+    
+    Container_Boundary(orders_infrastructure, "Infrastructure Layer") {
+        Component(order_repo_impl, "OrderRepository", "C#", "Repository implementation")
+        Component(order_selector_impl, "OrderSelector", "C#", "Data selection service")
+    }
+}
+
+Container_Boundary(shared, "Shared Infrastructure") {
+    Component(data_context, "DataContext", "C#", "DataContext, Entitiers, Configurations, Migrations, etc.")
+    Component(order_accessor_adapter, "OrderAccessorAdapter", "C#", "ACL adapter")
+    Component(int_events_pub_impl, "IntegrationEventsPublisher", "C#", "Outbox publisher")
+}
+
+Container_Boundary(core, "Core") {
+    Component(int_events_publisher, "IIntegrationEventsPublisher", "C#", "Queue messages publisher")
+}
+}
+
+' API Layer relationships
+Rel(couriers_controller, mediator, "TakeOrderCommand", "Mediator")
+Rel(mediator, courier_commands, "TakeOrderCommand", "Mediator")
+Rel(orders_controller, mediator, "GetOrderQuery", "Mediator")
+Rel(mediator, can_order_be_taken_query_handler, "CanOrderBeTakenQuery", "Mediator")
+Rel(mediator, get_order_query_handler, "GetOrderQuery", "Mediator")
+Rel(mediator, take_order_command_handler, "TakeOrderCommand", "Mediator")
+
+' Bounded Contexts relationships
+Rel(courier_commands, courier_repository, "Uses")
+Rel(take_order_command_handler, order_repository, "Uses")
+Rel(courier_commands, order_accessor, "Uses")
+Rel(courier_commands, courier_entity, "Uses")
+Rel(courier_commands, int_events_publisher, "Uses")
+Rel(courier_repo_impl, courier_entity, "Extracts/Saves")
+Rel(order_repo_impl, order_entity, "Extracts/Saves")
+
+Rel(can_order_be_taken_query_handler, order_selector, "Uses")
+
+Rel(get_order_query_handler, order_selector, "Uses")
+Rel(order_selector_impl, order_selector, "Implements")
+
+' Shared Infrastructure relationships
+Rel(courier_repo_impl, courier_repository, "Implements")
+Rel(order_repo_impl, order_repository, "Implements")
+Rel(order_accessor_adapter, order_accessor, "Implements")
+Rel(courier_repo_impl, data_context, "Uses")
+Rel(order_repo_impl, data_context, "Uses")
+Rel(order_selector_impl, data_context, "Uses")
+Rel(int_events_pub_impl, data_context, "Uses for outbox")
+Rel(int_events_pub_impl, int_events_publisher, "Implements")
+Rel(order_accessor_adapter, mediator, "CanOrderBeTakenQuery", "Mediator")
+Rel(courier_repo_impl, mediator, "OrderTakenEvent", "Domain event")
+@enduml
