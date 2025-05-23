@@ -3,15 +3,15 @@
 
 LAYOUT_WITH_LEGEND()
 
+skinparam ArrowColor #6F00FF
+skinparam ArrowFontSize 12
+
 title Component diagram of staff architecture
 
-Container_Boundary(staff, "Staff") {
 Container_Boundary(api, "API Layer") {
     Component(couriers_controller, "CouriersController", "ASP.NET Core", "Handles courier-related HTTP requests")
     Component(orders_controller, "OrdersController", "ASP.NET Core", "Handles order-related HTTP requests")
 }
-
-    Component(mediator, "Mediator", "C#", "Forwards requests to subdomains")
 
 Container_Boundary(couriers, "Couriers Bounded Context") {
     Container_Boundary(couriers_domain, "Domain Layer") {
@@ -27,6 +27,19 @@ Container_Boundary(couriers, "Couriers Bounded Context") {
     Container_Boundary(couriers_infrastructure, "Infrastructure Layer") {
         Component(courier_repo_impl, "CourierRepository", "C#", "Repository implementation")
     }
+}
+
+Container_Boundary(shared, "Shared") {
+
+Container_Boundary(inf, "Infrastructure") {
+    Component(data_context, "DataContext", "C#", "DataContext, Entitiers, Configurations, Migrations, etc.")
+    Component(order_accessor_adapter, "OrderAccessorAdapter", "C#", "ACL adapter")
+    Component(int_events_pub_impl, "IntegrationEventsPublisher", "C#", "Outbox publisher")
+}
+
+Container_Boundary(core, "Core") {
+    Component(int_events_publisher, "IIntegrationEventsPublisher", "C#", "Queue messages publisher")
+}
 }
 
 Container_Boundary(orders, "Orders Bounded Context") {
@@ -48,24 +61,9 @@ Container_Boundary(orders, "Orders Bounded Context") {
     }
 }
 
-Container_Boundary(shared, "Shared Infrastructure") {
-    Component(data_context, "DataContext", "C#", "DataContext, Entitiers, Configurations, Migrations, etc.")
-    Component(order_accessor_adapter, "OrderAccessorAdapter", "C#", "ACL adapter")
-    Component(int_events_pub_impl, "IntegrationEventsPublisher", "C#", "Outbox publisher")
-}
-
-Container_Boundary(core, "Core") {
-    Component(int_events_publisher, "IIntegrationEventsPublisher", "C#", "Queue messages publisher")
-}
-}
-
 ' API Layer relationships
-Rel(couriers_controller, mediator, "TakeOrderCommand", "Mediator")
-Rel(mediator, courier_commands, "TakeOrderCommand", "Mediator")
-Rel(orders_controller, mediator, "GetOrderQuery", "Mediator")
-Rel(mediator, can_order_be_taken_query_handler, "CanOrderBeTakenQuery", "Mediator")
-Rel(mediator, get_order_query_handler, "GetOrderQuery", "Mediator")
-Rel(mediator, take_order_command_handler, "TakeOrderCommand", "Mediator")
+Rel(couriers_controller, courier_commands, "TakeOrderCommand", "Mediator")
+Rel(orders_controller, get_order_query_handler, "GetOrderQuery", "Mediator")
 
 ' Bounded Contexts relationships
 Rel(courier_commands, courier_repository, "Uses")
@@ -90,6 +88,6 @@ Rel(order_repo_impl, data_context, "Uses")
 Rel(order_selector_impl, data_context, "Uses")
 Rel(int_events_pub_impl, data_context, "Uses for outbox")
 Rel(int_events_pub_impl, int_events_publisher, "Implements")
-Rel(order_accessor_adapter, mediator, "CanOrderBeTakenQuery", "Mediator")
-Rel(courier_repo_impl, mediator, "OrderTakenEvent", "Domain event")
+Rel(order_accessor_adapter, can_order_be_taken_query_handler, "CanOrderBeTaken", "Mediator")
+Rel(courier_repo_impl, take_order_command_handler, "OrderTakenEvent", "Domain event (Mediator)")
 @enduml
