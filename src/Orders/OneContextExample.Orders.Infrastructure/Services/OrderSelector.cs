@@ -15,11 +15,11 @@ internal class OrderSelector(DataContext context) : IOrderSelector
         return order?.ToEntity();
     }
 
-    public async Task<GetOrderViewModel?> GetOrderAsViewModel(Guid id, CancellationToken cancellationToken = default)
+    public async Task<GetOrderResult?> GetOrderAsViewModel(Guid id, CancellationToken cancellationToken = default)
     {
         return await context.Orders
             .AsNoTracking()
-            .Select(o => new GetOrderViewModel(o.Id, o.Sum, o.Status))
+            .Select(o => new GetOrderResult(o.Id, o.Sum, o.Status))
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 }

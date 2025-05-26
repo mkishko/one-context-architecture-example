@@ -1,16 +1,16 @@
 using JetBrains.Annotations;
 using Mediator;
-using OneContextExample.Orders.Application.Services;
 using OneContextExample.Orders.Contracts.Queries;
+using OneContextExample.Orders.Domain;
 
 namespace OneContextExample.Orders.Application.Handlers.Queries;
 
 [UsedImplicitly]
-public class CanOrderBeTakenQueryHandler(IOrderSelector selector) : IQueryHandler<CanOrderBeTakenQuery, CanOrderBeTakenViewModel>
+public class CanOrderBeTakenQueryHandler(IOrderRepository repository) : IQueryHandler<CanOrderBeTakenQuery, CanOrderBeTakenResult>
 {
-    public async ValueTask<CanOrderBeTakenViewModel> Handle(CanOrderBeTakenQuery beTakenQuery, CancellationToken cancellationToken)
+    public async ValueTask<CanOrderBeTakenResult> Handle(CanOrderBeTakenQuery beTakenQuery, CancellationToken cancellationToken)
     {
-        var order = await selector.GetOrderAsEntity(beTakenQuery.OrderId, cancellationToken);
-        return new CanOrderBeTakenViewModel(order?.CanBeTaken ?? false);
+        var order = await repository.Get(beTakenQuery.OrderId, cancellationToken);
+        return new CanOrderBeTakenResult(order?.CanBeTaken ?? false);
     }
 }

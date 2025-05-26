@@ -15,6 +15,7 @@ public class OrderTakenEventHandler(IOrderAccessor accessor, IIntegrationEventPu
             @event.CourierId,
             @event.OrderId,
             1), cancellationToken);
+
         await accessor.TakeOrder(@event.OrderId, cancellationToken);
     }
 }

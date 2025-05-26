@@ -6,5 +6,5 @@ namespace OneContextExample.Orders.Application.Services;
 public interface IOrderSelector
 {
     Task<Order?> GetOrderAsEntity(Guid id, CancellationToken cancellationToken = default);
-    Task<GetOrderViewModel?> GetOrderAsViewModel(Guid id, CancellationToken cancellationToken = default);
+    Task<GetOrderResult?> GetOrderAsViewModel(Guid id, CancellationToken cancellationToken = default);
 }
